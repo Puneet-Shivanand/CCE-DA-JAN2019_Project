@@ -4,7 +4,8 @@ X=[]
 Y=[]
 
 def read_data():
-    adata=open('../data/anova_data.csv').readlines()  
+    #adata=open('../data/anova_data.csv').readlines()  
+    adata=open(sys.argv[1]).readlines()
     for line in adata:
         X.append(line.split(',')[0].strip())
         Y.append(line.split(',')[1].strip())
@@ -18,10 +19,10 @@ def square_it(x):
 
 
 def print_out(n, DM, DT, DE, MSM, MSE, F, sumYi_Ycap, sumYi_Ybar, sumYcap_Ybar):
-    print ( "DF   |\tSS          |\tMS      |\tF     |\n",
-            "1   |\t%.2f    |\t%.2f|\t%.2f |\n" % (sumYcap_Ybar,MSM,F),
-            "%.2f|\t%.2f    |\t%.2f |\n" %(n-2, sumYi_Ycap,MSE),
-            "%.2f|\t%.2f    |\t%.2f |\n" % (n-1, sumYi_Ybar, (sumYi_Ybar/(n-1)))
+    print ( "DF       |\tSS          |\tMS         |\tF       |\n",
+            "1       |\t%.2f   |\t%.2f  |\t%.2f   |\n" % (sumYcap_Ybar,MSM,F),
+            "%.2f   |\t%.2f   |\t%.2f   |\n" %(n-2, sumYi_Ycap,MSE),
+            "%.2f   |\t%.2f   |\t%.2f    |\n" % (n-1, sumYi_Ybar, (sumYi_Ybar/(n-1)))
 
            )
     return
